@@ -4,21 +4,21 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
 # Directorios
-xml_dir = "/home/javier/Escritorio/ciencia_abierta/XML_articulos"
-output_dir = "/home/javier/Escritorio/ciencia_abierta/nubes_palabras"
+xml_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/XML_articulos"
+output_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/nubes_palabras"
 
 # Asegurar que el directorio de salida existe
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 def generate_wordcloud(xml_content, output_path):
-    """Genera una nube de palabras a partir del contenido XML, filtrando palabras de más de 4 letras."""
+    """Genera una nube de palabras a partir del contenido XML, filtrando palabras de más de 5 letras."""
     try:
         root = ET.fromstring(xml_content)
         text_elements = root.findall(".//{http://www.tei-c.org/ns/1.0}p")
         text = " ".join([elem.text for elem in text_elements if elem.text])
 
-        # Filtrar palabras de más de 4 letras
+        # Filtrar palabras de más de 5 letras
         words = [word for word in text.split() if len(word) > 5]
         filtered_text = " ".join(words)
 
