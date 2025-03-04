@@ -5,8 +5,8 @@ import os
 grobid_url = "http://localhost:8070/api/processFulltextDocument"
 
 # Rutas
-pdf_dir = "/home/javier/Escritorio/ciencia_abierta/articulos_cientificos"
-output_dir = "/home/javier/Escritorio/ciencia_abierta/XML_articulos"
+pdf_dir = "/home/javi/Escritorio/ciencia_abierta/articulos_cientificos"
+output_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/XML_articulos"
 
 # Función para procesar un PDF
 def process_pdf(pdf_path):
