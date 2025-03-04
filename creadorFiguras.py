@@ -30,3 +30,26 @@ for filename in os.listdir(xml_dir):
 
         try:
             with open(xml_path, 'r', encoding='utf-8') as file:
+                xml_content = file.read()
+                count = count_figures(xml_content)
+                # Obtener solo las primeras 6 letras del nombre del archivo
+                short_name = filename[:6]
+                article_names.append(short_name)
+                figure_counts.append(count)
+        except Exception as e:
+            print(f"Error al procesar {filename}: {e}")
+
+# Crear la gráfica
+plt.figure(figsize=(12, 6))  # Aumentar el tamaño de la figura
+plt.bar(article_names, figure_counts)
+plt.xlabel("Artículos")
+plt.ylabel("Número de Figuras")
+plt.title("Número de Figuras por Artículo")
+plt.xticks(rotation=45, ha="right", fontsize=8)  # Rotar y ajustar la fuente
+plt.tight_layout()# ajustar margenes.
+
+# Guardar la gráfica
+output_path = os.path.join(output_dir, "figuras_por_articulo.png")
+plt.savefig(output_path)
+plt.close()
+print(f"Visualización guardada en {output_path}")
