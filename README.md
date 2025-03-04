@@ -35,8 +35,45 @@ También necesitas tener Grobid instalado y ejecutándose. Puedes encontrar inst
 
 ## Configuracion
 1. Clona el repositorio
+
 	*git clone https://github.com/malekit01/ciencia_abierta*
+
 	*cd ciencia_abierta*
 2. Ejecuta el script prev_practica.sh para crear la estructura de carpetas necesaria
-	
+
+	*bash prev_practica.sh*
+3. Coloca tus archivos PDF de artículos científicos en la carpeta 
+
+	  */home/javi/Escritorio/ciencia_abierta/articulos_cientificos*
    
+	ya hay 10 articulos base que puede usar.
+
+## Uso
+1. Ejecuta lectroPDF.py para procesar los PDFs y generar archivos XML:
+
+	*python3 lectroPDF.py*
+
+2. Ejecuta creadorNubesPalabras.py para generar nubes de palabras a partir de los archivos XML:
+
+	*python3 creadorNubesPalabras.py*
+
+3. Ejecuta creadorFiguras.py para contar figuras y generar una gráfica:
+
+	*python3 creadorFiguras.py*
+
+4. Ejecuta extractorLinks.py para extraer enlaces de los archivos XML:
+
+	*python3 extractorLinks.py*
+
+>Licencia
+
+Este proyecto está licenciado bajo la [LICENCIA].
+
+>Citación
+
+Si utilizas este repositorio en tu investigación, por favor cita este trabajo como se describe en [CITATION]
+
+## Notas
+- El script **prev_practica.sh** debe ejecutarse antes de cualquier otro script para asegurar que la estructura de carpetas esté configurada correctamente.
+- Los scripts asumen que los archivos PDF y XML están en los directorios especificados. Asegúrate de que los archivos existan y estén en los formatos correctos.
+- Para un correcto funcionamiento de lectroPDF.py es necesario que Grobid este instalado y en funcionamiento.
