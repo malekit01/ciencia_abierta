@@ -1,43 +1,64 @@
 import os
-import xml.etree.ElementTree as ET
 import re
+import xml.etree.ElementTree as ET
 
-# Directorios
+# Directorios de entrada y salida
 xml_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/XML_articulos"
 output_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/links_articulos"
 
-# Asegurar que el directorio de salida existe
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
+# Crear la carpeta de salida si no existe
+os.makedirs(output_dir, exist_ok=True)
 
-def extract_links(xml_content):
-    """Extrae los enlaces del contenido XML."""
+# Expresión regular mejorada para detectar URLs
+url_pattern = re.compile(r'https?://[^\s<>"\'()]+')
+
+def extract_links_from_xml(xml_file):
+    """Extrae enlaces de un archivo XML y los devuelve en una lista."""
+    links = set()  # Usamos un set para evitar duplicados
+
     try:
-        root = ET.fromstring(xml_content)
-        text_elements = root.findall(".//{http://www.tei-c.org/ns/1.0}p")
-        text = " ".join([elem.text for elem in text_elements if elem.text])
-        # Expresión regular para encontrar URLs
-        links = re.findall(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
-        return links
-    except Exception as e:
-        print(f"Error al procesar XML: {e}")
-        return []
+        tree = ET.parse(xml_file)
+        root = tree.getroot()
 
-# Procesar cada archivo XML en la carpeta
+        # Recorrer todos los elementos del XML
+        for elem in root.iter():
+            # Extraer enlaces de texto dentro de las etiquetas
+            if elem.text:
+                links.update(url_pattern.findall(elem.text))
+
+            # Extraer enlaces de atributos (como href, src, target, etc.)
+            for attr_value in elem.attrib.values():
+                links.update(url_pattern.findall(attr_value))
+
+            # Extraer enlaces de "tail" (texto después de una etiqueta)
+            if elem.tail:
+                links.update(url_pattern.findall(elem.tail))
+
+    except Exception as e:
+        print(f"Error procesando {xml_file}: {e}")
+    
+    return sorted(links)  # Devolver lista ordenada para mejor legibilidad
+
+# Lista para almacenar los archivos generados
+archivos_generados = []
+
+# Procesar cada archivo en la carpeta XML
 for filename in os.listdir(xml_dir):
-    if filename.endswith(".xml"):
+    if filename.endswith(".xml"):  # Asegurarse de que es un XML
         xml_path = os.path.join(xml_dir, filename)
-        output_path = os.path.join(output_dir, os.path.splitext(filename)[0] + ".txt")
-        
-        try:
-            with open(xml_path, 'r', encoding='utf-8') as file:
-                xml_content = file.read()
-            links = extract_links(xml_content)
-            
-            with open(output_path, 'w', encoding='utf-8') as outfile:
-                for link in links:
-                    outfile.write(link + "\n")
-            
-            print(f"Enlaces guardados en {output_path}")
-        except Exception as e:
-            print(f"Error al leer {xml_path}: {e}")
+        links = extract_links_from_xml(xml_path)
+
+        # Guardar enlaces en un archivo de salida si hay enlaces encontrados
+        if links:
+            output_path = os.path.join(output_dir, f"{os.path.splitext(filename)[0]}_links.txt")
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write("\n".join(links))
+            archivos_generados.append(output_path)
+
+# Mostrar un único mensaje con los archivos generados
+if archivos_generados:
+    print(f"Enlaces extraídos y guardados en {output_dir}")
+   
+else:
+    print("No se encontraron enlaces en ningún archivo.")
+
