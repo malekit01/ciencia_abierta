@@ -62,9 +62,12 @@ También necesitas tener Grobid instalado. Puedes encontrar instrucciones de ins
 con estos pasos tendriamos la configuracion previa para poder ejecutar los programas.
 
 ## Uso
+
+Desde la carpeta ciencia abierta :
+
 1. Ejecuta lectroPDF.py para procesar los PDFs y generar archivos XML:
 
-		python3 lectroPDF.py
+		python3 lectorPDF.py
 
 2. Ejecuta creadorNubesPalabras.py para generar nubes de palabras a partir de los archivos XML:
 
