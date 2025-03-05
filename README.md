@@ -21,7 +21,7 @@ Este repositorio contiene los contenidos para la práctica de ciencia abierta. I
 
 >**Requisitos**
 
-Antes de ejecutar los scripts, asegúrate de tener instalado Python y las siguientes dependencias:
+Antes de ejecutar los scripts, asegúrate de tener instalado Python3 y las siguientes dependencias:
 
 - matplotlib
 
@@ -64,19 +64,19 @@ con estos pasos tendriamos la configuracion previa para poder ejecutar los progr
 ## Uso
 1. Ejecuta lectroPDF.py para procesar los PDFs y generar archivos XML:
 
-		python lectroPDF.py
+		python3 lectroPDF.py
 
 2. Ejecuta creadorNubesPalabras.py para generar nubes de palabras a partir de los archivos XML:
 
-		python creadorNubesPalabras.py
+		python3 creadorNubesPalabras.py
 
 3. Ejecuta creadorFiguras.py para contar figuras y generar una gráfica:
 
-		python creadorFiguras.py
+		python3 creadorFiguras.py
 
 4. Ejecuta extractorLinks.py para extraer enlaces de los archivos XML:
 
-		python extractorLinks.py
+		python3 extractorLinks.py
 
 >Licencia
 
