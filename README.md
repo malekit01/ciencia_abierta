@@ -29,40 +29,37 @@ Antes de ejecutar los scripts, asegúrate de tener instalado Python 3 y las sigu
 
 - requests
 
-Puedes instalar las dependencias utilizando pip y con el archivo requirements.txtdel repositorio : 
-	
-	pip install -r requirements.txt
+Puedes instalar las dependencias utilizando pip o con el archivo requirements.txt del repositorio como se indica en **Configuracion** en el paso **3**  : 
 
-También necesitas tener Grobid instalado y ejecutándose. Puedes encontrar instrucciones de instalación en el repositorio de Grobid (https://github.com/kermitt2/grobid) , y para ejecutar Grobid usar:
-	
-	 docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.7.2
-## Configuracion con Docker
+También necesitas tener Grobid instalado. Puedes encontrar instrucciones de instalación en el repositorio de Grobid (https://github.com/kermitt2/grobid) .
 
-1. Construir la imagen Docker
-
-		docker build -t ciencia-abierta:latest .
-
-2. Ejecutar el contenedor:
-
-		docker run -it ciencia-abierta:latest /bin/bash
-
-## Configuracion manual (sin Docker)
-
-Si prefieres no usar Docker, sigue estos pasos:
+## Configuracion
 
 1. Clona el repositorio
 
 		git clone https://github.com/malekit01/ciencia_abierta
+2. accede a la carpeta ciencia_abierta
 
 		cd ciencia_abierta
-2. Ejecuta el script prev_practica.sh para crear la estructura de carpetas necesaria
+3. comprobar que las depedencias estan instaladas	
+
+		pip install -r requirements.txt
+4. Ejecuta el script prev_practica.sh para crear la estructura de carpetas necesaria
 
 		bash prev_practica.sh
-3. Coloca tus archivos PDF de artículos científicos en la carpeta 
+5. Coloca tus archivos PDF de artículos científicos en la carpeta 
 
-	  	/home/javi/Escritorio/ciencia_abierta/articulos_cientificos
+	  	/ciencia_abierta/articulos_cientificos
    
-ya hay 10 articulos base que puede usar.
+	ya hay 10 articulos base que puede usar.
+
+6.  Ejecutar Grobid en otra terminal:
+	
+		 docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.7.2
+
+	si prefieres usar solo una terminal añadir **&** al final del anterior comando 
+
+con estos pasos tendriamos la configuracion previa para poder ejecutar los programas.
 
 ## Uso
 1. Ejecuta lectroPDF.py para procesar los PDFs y generar archivos XML:
