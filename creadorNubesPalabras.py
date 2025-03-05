@@ -4,8 +4,8 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
 # Directorios
-xml_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/XML_articulos"
-output_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/nubes_palabras"
+xml_dir = "resultados/XML_articulos"
+output_dir = "resultados/nubes_palabras"
 
 # Asegurar que el directorio de salida existe
 if not os.path.exists(output_dir):
