@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 
 # Directorios
-xml_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/XML_articulos"
-output_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/figuras"
+xml_dir = "resultados/XML_articulos"
+output_dir = "resultados/figuras"
 
 # Asegurar que el directorio de salida existe
 if not os.path.exists(output_dir):
