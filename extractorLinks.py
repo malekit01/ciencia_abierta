@@ -3,8 +3,8 @@ import re
 import xml.etree.ElementTree as ET
 
 # Directorios de entrada y salida
-xml_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/XML_articulos"
-output_dir = "/home/javi/Escritorio/ciencia_abierta/resultados/links_articulos"
+xml_dir = "resultados/XML_articulos"
+output_dir = "resultados/links_articulos"
 
 # Crear la carpeta de salida si no existe
 os.makedirs(output_dir, exist_ok=True)
