@@ -2,6 +2,22 @@
 
 Este documento describe el proceso de validación para cada uno de los scripts desarrollados en este repositorio.
 
+## Configuración del Entorno con `prev_practica.sh`
+
+### Propósito
+El script `prev_practica.sh` se utiliza para configurar la estructura de carpetas necesaria para la ejecución de los demás scripts. Este script asegura que todas las carpetas de salida estén creadas antes de ejecutar los scripts principales.
+
+### Validación
+1.  **Ejecución del Script:**
+    * Se ejecutó el script `prev_practica.sh` en un entorno de Linux/macOS para verificar que se crearan las carpetas correctamente.
+    * Se verificó que la carpeta base `ciencia_abierta` y la carpeta de resultados `resultados` se crearan en el directorio `$HOME/Escritorio`.
+    * Se verificó que las subcarpetas `figuras`, `links_articulos`, `nubes_palabras`, y `XML_articulos` se crearan dentro de `resultados`.
+2.  **Verificación de la Estructura de Carpetas:**
+    * Se revisó manualmente la estructura de carpetas creada para asegurar que coincidiera con la estructura esperada.
+    * Se verificó que no se generaran errores durante la ejecución del script.
+3.  **Independencia del Entorno:**
+    * Se ejecutó el script en diferentes entornos de prueba para asegurar que funcionara correctamente independientemente de la configuración previa del sistema.
+
 ## 1. lectorDPF.py
 
 ### Propósito
