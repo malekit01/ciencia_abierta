@@ -51,7 +51,7 @@ También necesitas tener Grobid instalado. Puedes encontrar instrucciones de ins
 
 	  	/ciencia_abierta/articulos_cientificos
    
-	ya hay 10 articulos base que puede usar.
+	ya hay 5 articulos base que puede usar.
 
 6.  Ejecutar Grobid en otra terminal:
 	
