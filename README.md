@@ -63,7 +63,7 @@ con estos pasos tendriamos la configuracion previa para poder ejecutar los progr
 
 ## Uso
 
-Desde la carpeta ciencia abierta :
+Desde la carpeta **ciencia_abierta** :
 
 1. Ejecuta lectroPDF.py para procesar los PDFs y generar archivos XML:
 
